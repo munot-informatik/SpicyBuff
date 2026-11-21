@@ -44,7 +44,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'anxiety',
     label: 'Anxious / worried',
-    emoji: '😟',
     category: 'fear',
     blurb: 'Anxiety is your alarm system working a little too hard. It is uncomfortable, but it is not dangerous.',
     commonIn: ['Anxiety disorders', 'ADHD', 'Autism', 'BPD', 'Depression'],
@@ -65,7 +64,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'panic',
     label: 'Panic attack',
-    emoji: '😱',
     category: 'fear',
     blurb: 'Panic attacks feel terrifying, but they peak and pass, usually within about 10 minutes. You are not alone in this.',
     commonIn: ['Panic disorder', 'Anxiety disorders', 'PTSD', 'BPD', 'Autism'],
@@ -85,7 +83,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'doom',
     label: 'Feeling of doom',
-    emoji: '🌑',
     category: 'fear',
     blurb: 'A sense that something terrible is about to happen. This feeling is common with anxiety, and it is a feeling, not a forecast.',
     commonIn: ['Anxiety disorders', 'Panic disorder', 'Depression', 'BPD', 'ADHD'],
@@ -101,7 +98,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'dread',
     label: 'Dread about something coming',
-    emoji: '😩',
     category: 'fear',
     blurb: 'Dread grows when we picture the worst version of what is coming. Shrinking it into steps often shrinks the dread too.',
     commonIn: ['Anxiety disorders', 'ADHD', 'Autism', 'Depression'],
@@ -117,7 +113,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'paranoia',
     label: 'Paranoid / suspicious',
-    emoji: '👀',
     category: 'fear',
     blurb: 'Suspicious thoughts are more common than most people think, and they get louder with stress, poor sleep and worry.',
     commonIn: ['Anxiety', 'BPD (under stress)', 'PTSD', 'Psychosis', 'Sleep loss'],
@@ -140,7 +135,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'techparanoia',
     label: 'Tech paranoia',
-    emoji: '📱',
     category: 'fear',
     blurb: 'Feeling spied on, hacked or tracked by devices. Some tech worries are realistic, so it helps to separate what you can check from what you can\'t.',
     commonIn: ['Anxiety disorders', 'OCD', 'Paranoia', 'Autism', 'ADHD'],
@@ -160,7 +154,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'social',
     label: 'Social anxiety',
-    emoji: '😳',
     category: 'fear',
     blurb: 'Fear of being judged is one of the most common human fears. People notice far less than our brain tells us.',
     commonIn: ['Social anxiety disorder', 'Autism', 'ADHD', 'Depression'],
@@ -180,7 +173,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'intrusive',
     label: 'Intrusive thoughts',
-    emoji: '🌀',
     category: 'fear',
     blurb: 'Unwanted, disturbing thoughts pop into almost everyone\'s head. Having a thought does not mean you want it or will act on it.',
     commonIn: ['OCD', 'Anxiety disorders', 'Postpartum', 'PTSD', 'ADHD'],
@@ -200,7 +192,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'health',
     label: 'Health anxiety',
-    emoji: '🩺',
     category: 'fear',
     blurb: 'When you are anxious, the brain scans the body for danger and finds sensations that were always there.',
     commonIn: ['Health anxiety', 'Panic disorder', 'OCD', 'Autism'],
@@ -221,7 +212,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'shaking',
     label: 'Inner shaking / restless',
-    emoji: '🫨',
     category: 'body',
     blurb: 'That buzzing, vibrating feeling inside is often extra stress energy. The body usually calms when that energy gets used or released.',
     commonIn: ['Anxiety disorders', 'ADHD', 'Autism', 'PTSD', 'BPD'],
@@ -237,7 +227,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'sleep',
     label: 'Can\'t sleep',
-    emoji: '🌙',
     category: 'body',
     blurb: 'Lying awake is frustrating. Trying harder to sleep usually backfires, so these tools work by letting go, not forcing.',
     commonIn: ['Insomnia', 'ADHD', 'Autism', 'Anxiety', 'Depression', 'Bipolar'],
@@ -259,7 +248,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'sensory',
     label: 'Sensory overload',
-    emoji: '🔊',
     category: 'body',
     blurb: 'When input is more than your nervous system can process, it is not a weakness. It is a signal to turn the input down.',
     commonIn: ['Autism', 'ADHD', 'PTSD', 'Sensory processing differences', 'Migraine'],
@@ -275,7 +263,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'dissociation',
     label: 'Unreal / detached',
-    emoji: '🫥',
     category: 'body',
     blurb: 'Feeling unreal or far away is your brain\'s protective dimmer switch under stress. It is unsettling, but not dangerous.',
     commonIn: ['PTSD', 'BPD', 'Anxiety', 'Depersonalization/derealization', 'Autism'],
@@ -291,7 +278,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'burnout',
     label: 'Burnout / drained',
-    emoji: '🪫',
     category: 'body',
     blurb: 'Burnout happens when demands outweigh your resources for too long. Recovery needs less input, not more effort.',
     commonIn: ['Autistic burnout', 'ADHD', 'Depression', 'Chronic stress'],
@@ -309,7 +295,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'low',
     label: 'Low / sad',
-    emoji: '🌧️',
     category: 'mood',
     blurb: 'Low mood makes everything heavier, including the tools that help. Small is the right size today.',
     commonIn: ['Depression', 'Bipolar', 'ADHD', 'Autism', 'BPD'],
@@ -326,7 +311,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'empty',
     label: 'Empty / numb',
-    emoji: '🕳️',
     category: 'mood',
     blurb: 'Chronic emptiness is one of the hardest feelings to describe. It often softens through connection and small meaningful actions.',
     commonIn: ['BPD', 'Depression', 'PTSD', 'Autism'],
@@ -345,7 +329,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'hopeless',
     label: 'Hopeless',
-    emoji: '🥀',
     category: 'mood',
     blurb: 'Hopelessness is a symptom that lies about the future. It is a reason to reach out, not to give up.',
     commonIn: ['Depression', 'BPD', 'Bipolar', 'PTSD'],
@@ -361,7 +344,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'shame',
     label: 'Shame / self-hate',
-    emoji: '😞',
     category: 'mood',
     blurb: 'Shame says "I am bad", not "I did something bad". It shrinks when it meets understanding instead of more criticism.',
     commonIn: ['BPD', 'ADHD', 'Autism', 'Depression', 'PTSD', 'Social anxiety'],
@@ -377,7 +359,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'guilt',
     label: 'Guilt',
-    emoji: '😔',
     category: 'mood',
     blurb: 'Guilt can be useful when it points to something you can repair, and useless when it is just punishment.',
     commonIn: ['Depression', 'OCD', 'BPD', 'ADHD', 'Autism'],
@@ -393,7 +374,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'lonely',
     label: 'Lonely',
-    emoji: '🫂',
     category: 'mood',
     blurb: 'Loneliness is a signal, like hunger, that you need connection. It is not proof that you are unlovable.',
     commonIn: ['Depression', 'Autism', 'ADHD', 'BPD', 'Social anxiety'],
@@ -411,7 +391,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'rejection',
     label: 'Rejected / criticized',
-    emoji: '💔',
     category: 'people',
     blurb: 'For many ADHD and BPD brains, rejection hits with physical force. People often call it rejection sensitivity. The pain is real, and it passes.',
     commonIn: ['ADHD (rejection sensitivity)', 'BPD', 'Autism', 'Depression', 'Social anxiety'],
@@ -427,7 +406,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'abandonment',
     label: 'Fear of abandonment',
-    emoji: '🫣',
     category: 'people',
     blurb: 'The terror that someone will leave can flood you. That flood is a feeling about the past showing up in the present.',
     commonIn: ['BPD', 'Attachment trauma', 'ADHD', 'Anxiety'],
@@ -443,7 +421,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'anger',
     label: 'Angry / rage',
-    emoji: '😡',
     category: 'people',
     blurb: 'Anger is energy that says "something is wrong". You get to decide what to do with that energy.',
     commonIn: ['BPD', 'ADHD', 'Autism', 'PTSD', 'Depression'],
@@ -459,7 +436,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'storm',
     label: 'Emotional storm',
-    emoji: '🌪️',
     category: 'people',
     blurb: 'Emotions that switch fast and hit hard. Storms feel endless while you are inside them, but they do pass.',
     commonIn: ['BPD', 'ADHD (emotional dysregulation)', 'Bipolar', 'PTSD', 'Autism'],
@@ -476,7 +452,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'pleasing',
     label: 'People-pleasing / can\'t say no',
-    emoji: '🎭',
     category: 'people',
     blurb: 'Bending yourself to keep everyone happy is exhausting, and you are allowed to have limits.',
     commonIn: ['Autism (masking)', 'ADHD', 'BPD', 'Codependency', 'Trauma'],
@@ -493,7 +468,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'paralysis',
     label: 'Can\'t start (task paralysis)',
-    emoji: '🧊',
     category: 'brain',
     blurb: 'Task paralysis is not laziness. It often comes from an overloaded brain or fear of getting it wrong.',
     commonIn: ['ADHD', 'Autism', 'Depression', 'Anxiety'],
@@ -509,7 +483,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'overwhelm',
     label: 'Overwhelmed – too much',
-    emoji: '🌊',
     category: 'brain',
     blurb: 'When everything feels urgent, nothing gets done. Getting it out of your head is the first step.',
     commonIn: ['ADHD', 'Autism', 'Anxiety', 'Burnout', 'BPD'],
@@ -525,7 +498,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'racing',
     label: 'Racing thoughts',
-    emoji: '🏎️',
     category: 'brain',
     blurb: 'A busy brain can feel like 20 browser tabs playing music at once. You don\'t have to close them all, just turn the volume down.',
     commonIn: ['ADHD', 'Anxiety', 'Bipolar', 'BPD', 'OCD'],
@@ -547,7 +519,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'rumination',
     label: 'Replaying / overthinking',
-    emoji: '🔁',
     category: 'brain',
     blurb: 'Replaying feels like problem-solving, but it usually keeps you stuck. The trick is changing how you think, not just what you think.',
     commonIn: ['Depression', 'Anxiety', 'ADHD', 'Autism', 'OCD', 'BPD'],
@@ -563,7 +534,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'fomo',
     label: 'FOMO / comparison',
-    emoji: '📲',
     category: 'brain',
     blurb: 'Feeds show everyone else\'s highlight reel. FOMO is a signal about your own needs, not proof you are behind.',
     commonIn: ['ADHD', 'Social anxiety', 'Depression', 'BPD'],
@@ -579,7 +549,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'perfectionism',
     label: 'Not good enough / impostor',
-    emoji: '🎯',
     category: 'brain',
     blurb: 'Most high achievers feel like frauds at some point. Your worth is not your output.',
     commonIn: ['ADHD', 'Autism', 'Anxiety', 'OCD', 'Eating disorders', 'Depression'],
@@ -597,7 +566,6 @@ export const FEELINGS: Feeling[] = [
   {
     id: 'crisis',
     label: 'I\'m in crisis / might hurt myself',
-    emoji: '🆘',
     category: 'mood',
     blurb: 'You deserve support right now. Please reach out to a real person.',
     commonIn: [],

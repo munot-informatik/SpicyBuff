@@ -14,10 +14,13 @@ import {
 } from './components/Screens';
 import { detectLang, LangContext, localQuestion, type Lang } from './i18n/localize';
 import { UI } from './i18n/ui';
+import { Logo } from './components/Logo';
+import { Icon } from './components/icons';
+import { Moon, Phone, Sun, SunMoon, type LucideIcon } from 'lucide-react';
 
 type Theme = 'system' | 'light' | 'dark';
 const NEXT_THEME: Record<Theme, Theme> = { system: 'light', light: 'dark', dark: 'system' };
-const THEME_ICON: Record<Theme, string> = { system: '🌓', light: '☀️', dark: '🌙' };
+const THEME_ICON: Record<Theme, LucideIcon> = { system: SunMoon, light: Sun, dark: Moon };
 
 /**
  * All state lives in React memory only: no storage APIs, no network.
@@ -206,7 +209,7 @@ export default function App({ initialLang }: { initialLang?: Lang } = {}) {
     <div className="app">
       <header className="top">
         <button type="button" className="brand" onClick={home} aria-label={t.appHome}>
-          <span aria-hidden="true">🌶️</span> SpicyBuff
+          <Logo />
         </button>
         <nav className="top-actions">
           <button
@@ -218,7 +221,7 @@ export default function App({ initialLang }: { initialLang?: Lang } = {}) {
             data-testid="theme-toggle"
             data-theme-state={theme}
           >
-            <span aria-hidden="true">{THEME_ICON[theme]}</span>
+            <Icon as={THEME_ICON[theme]} />
           </button>
           <button
             type="button"
@@ -234,6 +237,7 @@ export default function App({ initialLang }: { initialLang?: Lang } = {}) {
             {t.about}
           </button>
           <button type="button" className="btn small danger" onClick={() => go({ name: 'crisis' })} data-testid="help-now">
+            <Icon as={Phone} size={15} />
             {t.helpNow}
           </button>
         </nav>

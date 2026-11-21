@@ -1,6 +1,7 @@
 import { EXERCISES } from '../data/exercises';
 import { COMMON_QUESTIONS, FEELINGS, FEELING_BY_ID } from '../data/feelings';
 import { MODALITIES, MODALITY_BY_ID } from '../data/modalities';
+import { FEELING_ICONS, MODALITY_ICONS } from '../components/icons';
 import { CRISIS_LINES, tel } from '../data/crisis';
 import { DISTORTIONS } from '../data/distortions';
 
@@ -14,10 +15,10 @@ describe('content integrity', () => {
     expect(new Set(mo).size).toBe(mo.length);
   });
 
-  it('every approach has a unique icon and a philosophy explainer', () => {
-    expect(new Set(MODALITIES.map((m) => m.icon)).size).toBe(MODALITIES.length);
+  it('every feeling and approach has a line icon, and approaches have a philosophy explainer', () => {
+    for (const f of FEELINGS) expect(FEELING_ICONS[f.id], f.id).toBeDefined();
+    expect(new Set(MODALITIES.map((m) => MODALITY_ICONS[m.id])).size).toBe(MODALITIES.length);
     for (const m of MODALITIES) {
-      expect(m.icon, m.id).toBeTruthy();
       expect(m.origin, m.id).toBeTruthy();
       expect(m.philosophy.length, m.id).toBeGreaterThanOrEqual(2);
     }
@@ -111,5 +112,17 @@ describe('content integrity', () => {
 
   it('lists all ten Burns distortions', () => {
     expect(DISTORTIONS).toHaveLength(10);
+  });
+});
+
+describe('no emoji in the interface', () => {
+  it('UI strings, feelings, approaches and exercises contain no emoji', async () => {
+    const { UI } = await import('../i18n/ui');
+    const { DE_FEELINGS } = await import('../i18n/de/feelings');
+    const { DE_MODALITIES } = await import('../i18n/de/misc');
+    const { EXERCISES } = await import('../data/exercises');
+    const emoji = /\p{Extended_Pictographic}/u;
+    const all = JSON.stringify([UI.en, UI.de, FEELINGS, DE_FEELINGS, MODALITIES, DE_MODALITIES, EXERCISES]);
+    expect(all.match(emoji)?.[0]).toBeUndefined();
   });
 });

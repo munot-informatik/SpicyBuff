@@ -12,8 +12,6 @@ export type ModalityId =
 
 export interface Modality {
   id: ModalityId;
-  /** Small pictogram shown on the approach tiles and tags. */
-  icon: string;
   name: string;
   short: string;
   /** Who developed it and when, in one line. */
@@ -112,7 +110,6 @@ export type CategoryId = 'fear' | 'body' | 'mood' | 'people' | 'brain';
 export interface Feeling {
   id: string;
   label: string;
-  emoji: string;
   category: CategoryId;
   /** Short validating line shown after tapping. */
   blurb: string;

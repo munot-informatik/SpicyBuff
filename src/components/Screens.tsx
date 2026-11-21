@@ -19,6 +19,8 @@ import {
   warningText,
 } from '../i18n/localize';
 import { StepView } from './Steps';
+import { BestMatchIcon, FeelingIcon, Icon, ModalityIcon } from './icons';
+import { BookOpen, Frown, Info, LifeBuoy as LifeBuoyIcon, Lock, Meh, Phone, Siren, Smile, TriangleAlert } from 'lucide-react';
 
 // ---------------------------------------------------------------- Disclaimer
 export function DisclaimerGate({ onAccept }: { onAccept: () => void }) {
@@ -44,7 +46,7 @@ export function DisclaimerGate({ onAccept }: { onAccept: () => void }) {
         ))}
       </ul>
       <p className="privacy-note">
-        🔒 <strong>{t.gatePrivacyStrong}</strong>
+        <Icon as={Lock} size={16} /> <strong>{t.gatePrivacyStrong}</strong>
         {t.gatePrivacy}
       </p>
       <label className="consent">
@@ -77,7 +79,7 @@ export function FeelingPicker({ onPick }: { onPick: (id: string) => void }) {
       </h1>
       <p className="muted center">{t.pickSub}</p>
       <button type="button" className="crisis-tile" onClick={() => onPick('crisis')} data-testid="feeling-crisis">
-        <span aria-hidden="true">🆘</span> {t.crisisTile}
+        <Icon as={LifeBuoyIcon} /> {t.crisisTile}
       </button>
       <label className="search">
         <span className="sr-only">{t.searchLabel}</span>
@@ -92,8 +94,8 @@ export function FeelingPicker({ onPick }: { onPick: (id: string) => void }) {
             <div className="grid">
               {items.map(({ base, loc }) => (
                 <button key={base.id} type="button" className="tile" onClick={() => onPick(base.id)} data-testid={`feeling-${base.id}`}>
-                  <span className="tile-emoji" aria-hidden="true">
-                    {base.emoji}
+                  <span className="tile-icon">
+                    <FeelingIcon id={base.id} />
                   </span>
                   <span className="tile-label">{loc.label}</span>
                 </button>
@@ -133,7 +135,10 @@ export function QuestionStep({
       </div>
       {index === 0 && (
         <div className="blurb">
-          <span aria-hidden="true">{f.emoji}</span> {f.blurb}
+          <span className="blurb-icon">
+            <FeelingIcon id={f.id} size={20} />
+          </span>
+          {f.blurb}
           {f.commonIn.length > 0 && (
             <span className="muted small block">
               {t.commonIn} {f.commonIn.join(', ')}
@@ -179,8 +184,8 @@ export function ApproachPicker({ feelingId, onPick }: { feelingId: string; onPic
       <p className="muted">{t.approachSub}</p>
       <div className="approach-grid">
         <button type="button" className="approach-tile best" onClick={() => onPick(null)} data-testid="modality-any">
-          <span className="approach-icon" aria-hidden="true">
-            ✨
+          <span className="approach-icon">
+            <Icon as={BestMatchIcon} size={22} />
           </span>
           <span className="approach-name">{t.bestMatchAny}</span>
           <span className="approach-sub">{t.bestMatchAnySub}</span>
@@ -198,8 +203,8 @@ export function ApproachPicker({ feelingId, onPick }: { feelingId: string; onPic
               title={m.name}
               aria-label={has ? m.name : `${m.name} (${t.noExactShort})`}
             >
-              <span className="approach-icon" aria-hidden="true">
-                {m.icon}
+              <span className="approach-icon">
+                <ModalityIcon id={m.id} />
               </span>
               <span className="approach-name" aria-hidden="true">
                 {m.short}
@@ -222,7 +227,7 @@ export function ApproachGuide() {
   return (
     <details className="guide" data-testid="approach-guide">
       <summary>
-        <span aria-hidden="true">ℹ️ </span>
+        <Icon as={Info} size={18} />
         {t.guideTitle}
       </summary>
       <p className="muted small">{t.guideIntro}</p>
@@ -231,8 +236,8 @@ export function ApproachGuide() {
         return (
           <details key={m.id} className="guide-item" data-testid={`guide-${m.id}`}>
             <summary>
-              <span className="guide-icon" aria-hidden="true">
-                {m.icon}
+              <span className="guide-icon">
+                <ModalityIcon id={m.id} size={20} />
               </span>
               <span>{m.name}</span>
             </summary>
@@ -283,7 +288,7 @@ export function Results({
     <section aria-labelledby="res-title">
       {rec.warnings.map((w) => (
         <div key={w} className="alert" role="alert">
-          ⚠️ {warningText(w, lang)}
+          <Icon as={TriangleAlert} /> {warningText(w, lang)}
         </div>
       ))}
       {rec.intensity === 'high' && (
@@ -295,7 +300,7 @@ export function Results({
         </div>
       )}
       <p className="muted small">
-        {t.forFeeling} {f.emoji} {f.label}
+        {t.forFeeling} {f.label}
       </p>
       <h1 id="res-title" className="q-title">
         {t.tryThisNow}
@@ -320,7 +325,7 @@ export function Results({
             className={`chip ${modality === m.id ? 'on' : ''}`}
             onClick={() => onModality(m.id)}
           >
-            <span aria-hidden="true">{m.icon} </span>
+            <ModalityIcon id={m.id} size={15} />
             {localModality(m, lang).short}
           </button>
         ))}
@@ -349,12 +354,16 @@ function ExerciseCard({ s, primary, onStart }: { s: Scored; primary?: boolean; o
     <article className={`card ex-card ${primary ? 'primary' : ''}`} data-testid={primary ? 'primary' : 'alternative'} data-exercise={e.id}>
       <div className="ex-meta">
         <span className="tag" data-testid="modality-tag">
-          <span aria-hidden="true">{MODALITY_BY_ID[e.modality].icon} </span>
+          <ModalityIcon id={e.modality} size={14} />
           {localModality(MODALITY_BY_ID[e.modality], lang).short}
         </span>
         <span className="tag">{t.minutes(e.minutes)}</span>
         {e.discreet && <span className="tag">{t.discreet}</span>}
-        {e.quote && <span className="tag book">📖 {e.quote.book === 'feeling-good' ? t.bookFG : t.bookCourage}</span>}
+        {e.quote && (
+          <span className="tag book">
+            <Icon as={BookOpen} size={14} /> {e.quote.book === 'feeling-good' ? t.bookFG : t.bookCourage}
+          </span>
+        )}
       </div>
       <h3 className="ex-title">{e.title}</h3>
       <p>{e.summary}</p>
@@ -391,7 +400,10 @@ export function ExercisePlayer({
   return (
     <section aria-labelledby="ex-title" className="player">
       <div className="ex-meta">
-        <span className="tag">{localModality(MODALITY_BY_ID[e.modality], lang).short}</span>
+        <span className="tag">
+          <ModalityIcon id={e.modality} size={14} />
+          {localModality(MODALITY_BY_ID[e.modality], lang).short}
+        </span>
         <span className="tag">{t.minutes(e.minutes)}</span>
       </div>
       <h1 id="ex-title" className="q-title">
@@ -408,7 +420,7 @@ export function ExercisePlayer({
           {e.quote && <BookQuote e={e} />}
           {e.caution && (
             <div className="alert" role="note">
-              ⚠️ {e.caution}
+              <Icon as={TriangleAlert} /> {e.caution}
             </div>
           )}
           <button type="button" className="btn primary block" onClick={() => setI(0)} data-testid="begin">
@@ -437,13 +449,16 @@ export function ExercisePlayer({
         <div className="card step">
           <h2 className="h-small">{t.howNow}</h2>
           <div className="options">
-            <button type="button" className="option" onClick={() => onDone('better')} data-testid="feel-better">
+            <button type="button" className="option with-icon" onClick={() => onDone('better')} data-testid="feel-better">
+              <Icon as={Smile} size={20} />
               {t.better}
             </button>
-            <button type="button" className="option" onClick={() => onDone('same')} data-testid="feel-same">
+            <button type="button" className="option with-icon" onClick={() => onDone('same')} data-testid="feel-same">
+              <Icon as={Meh} size={20} />
               {t.same}
             </button>
-            <button type="button" className="option" onClick={() => onDone('worse')} data-testid="feel-worse">
+            <button type="button" className="option with-icon" onClick={() => onDone('worse')} data-testid="feel-worse">
+              <Icon as={Frown} size={20} />
               {t.worse}
             </button>
           </div>
@@ -465,7 +480,7 @@ export function BookQuote({ e }: { e: Exercise }) {
   const translated = quoteTranslation(e, lang);
   return (
     <figure className="quote">
-      <blockquote>“{translated ?? q.text}”</blockquote>
+      <blockquote>{translated ?? q.text}</blockquote>
       <figcaption>
         {q.book === 'feeling-good' ? t.authorsFG : t.authorsCourage}, <cite>{localWhere(q.where, lang)}</cite>
         {translated && (
@@ -553,7 +568,7 @@ export function CrisisPanel({ onExercise, onClose }: { onExercise: (id: string) 
         {t.crisisTitle}
       </h1>
       <div className="alert strong" role="alert">
-        🚨 {c.emergency}
+        <Icon as={Siren} /> {c.emergency}
       </div>
       <p>{t.crisisLead}</p>
       {c.lines.map((r) => (
@@ -563,7 +578,7 @@ export function CrisisPanel({ onExercise, onClose }: { onExercise: (id: string) 
             {r.lines.map((l) => (
               <li key={l.name + l.number}>
                 <a href={tel(l.number)} className="tel">
-                  📞 {l.number}
+                  <Icon as={Phone} size={15} /> {l.number}
                 </a>{' '}
                 {l.name}
                 {l.note && <span className="muted small"> · {l.note}</span>}

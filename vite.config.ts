@@ -17,7 +17,7 @@ const csp = (): Plugin => ({
       "style-src 'self'",
       "img-src 'self' data:",
       "connect-src 'none'",
-      "font-src 'none'",
+      "font-src 'self'",
       "object-src 'none'",
       "base-uri 'none'",
       "form-action 'none'",

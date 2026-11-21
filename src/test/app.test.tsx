@@ -106,7 +106,7 @@ for (const lang of LANGS) {
           screen.getByRole('heading', { name: t.tryThisNow });
           const tag = within(id('primary')).getByTestId('modality-tag').textContent;
           if (avail.has(m.id)) {
-            expect(tag).toBe(`${m.icon} ${localModality(m, lang).short}`);
+            expect(tag).toBe(localModality(m, lang).short);
             expect(screen.queryByTestId('fallback')).toBeNull();
           } else {
             expect(id('fallback')).toBeInTheDocument();
@@ -259,7 +259,7 @@ for (const lang of LANGS) {
       for (const base of MODALITIES) {
         const m = localModality(base, lang);
         const tile = screen.getByRole('button', { name: avail.has(m.id) ? m.name : `${m.name} (${t.noExactShort})` });
-        expect(tile).toHaveTextContent(m.icon);
+        expect(tile.querySelector('svg.icon')).not.toBeNull();
         expect(tile).toHaveTextContent(m.short);
         // Tiles stay short: no long description or research text on the button itself.
         expect(tile).not.toHaveTextContent(m.description);

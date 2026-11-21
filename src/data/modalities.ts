@@ -3,7 +3,6 @@ import type { Modality } from './types';
 export const MODALITIES: Modality[] = [
   {
     id: 'cbt',
-    icon: '🧠',
     name: 'Cognitive Behavioral Therapy (CBT)',
     short: 'CBT',
     origin: 'Aaron T. Beck and Albert Ellis, from the 1950s–60s. Made popular by David Burns\' "Feeling Good".',
@@ -19,7 +18,6 @@ export const MODALITIES: Modality[] = [
   },
   {
     id: 'dbt',
-    icon: '🌊',
     name: 'Dialectical Behavior Therapy (DBT)',
     short: 'DBT',
     origin: 'Marsha Linehan, 1980s–90s, first for people with very intense emotions and borderline personality disorder.',
@@ -35,7 +33,6 @@ export const MODALITIES: Modality[] = [
   },
   {
     id: 'act',
-    icon: '🧭',
     name: 'Acceptance & Commitment Therapy (ACT)',
     short: 'ACT',
     origin: 'Steven C. Hayes and colleagues, from the 1980s. Said like the word "act".',
@@ -51,7 +48,6 @@ export const MODALITIES: Modality[] = [
   },
   {
     id: 'mindfulness',
-    icon: '🍃',
     name: 'Mindfulness-based approaches (MBSR / MBCT)',
     short: 'Mindfulness',
     origin: 'Rooted in Buddhist meditation. Brought into medicine by Jon Kabat-Zinn (MBSR, 1979) and combined with CBT in MBCT (Segal, Williams & Teasdale).',
@@ -66,7 +62,6 @@ export const MODALITIES: Modality[] = [
   },
   {
     id: 'compassion',
-    icon: '💗',
     name: 'Compassion-Focused Therapy (CFT) & Self-Compassion',
     short: 'Self-compassion',
     origin: 'Paul Gilbert (Compassion-Focused Therapy, 2000s) and Kristin Neff\'s research on self-compassion.',
@@ -81,7 +76,6 @@ export const MODALITIES: Modality[] = [
   },
   {
     id: 'adlerian',
-    icon: '🤝',
     name: 'Adlerian (Individual) Psychology',
     short: 'Adlerian',
     origin: 'Alfred Adler (1870–1937), a Viennese doctor who broke with Freud. Retold as a dialogue in "The Courage to Be Disliked".',
@@ -97,7 +91,6 @@ export const MODALITIES: Modality[] = [
   },
   {
     id: 'somatic',
-    icon: '🫁',
     name: 'Body-based / physiological regulation',
     short: 'Body-based',
     origin: 'Physiology and stress research, e.g. Edmund Jacobson\'s muscle relaxation (1930s) and modern breathing studies.',
@@ -113,7 +106,6 @@ export const MODALITIES: Modality[] = [
   },
   {
     id: 'sensory',
-    icon: '🎧',
     name: 'Sensory regulation (neuro-affirming / occupational therapy)',
     short: 'Sensory',
     origin: 'Occupational therapy (e.g. Winnie Dunn\'s sensory processing work) and knowledge shared by autistic and ADHD communities.',
@@ -129,7 +121,6 @@ export const MODALITIES: Modality[] = [
   },
   {
     id: 'writing',
-    icon: '✍️',
     name: 'Expressive & structured writing (journaling)',
     short: 'Journaling',
     origin: 'James Pennebaker\'s expressive-writing studies (from 1986) and later research on putting feelings into words.',

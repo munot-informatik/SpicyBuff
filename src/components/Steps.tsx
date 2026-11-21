@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import type { BreathPattern, Step } from '../data/types';
 import { localDistortions, useLang, useT } from '../i18n/localize';
+import { Lock } from 'lucide-react';
+import { Icon } from './icons';
 
 function useInterval(cb: () => void, ms: number | null) {
   const saved = useRef(cb);
@@ -155,7 +157,9 @@ function WriteStep({ body, fields, seconds }: { body: string; fields: string[]; 
           />
         </label>
       ))}
-      <p className="privacy-note">{t.privacyNote}</p>
+      <p className="privacy-note">
+        <Icon as={Lock} size={15} /> {t.privacyNote}
+      </p>
     </div>
   );
 }
