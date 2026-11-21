@@ -1,26 +1,44 @@
 /**
- * SpicyBuff mark: a chili with a blue "buff" arrow, like a stat boost in a video game.
- * The arrow points up and fades out toward the bottom.
+ * SpicyBuff mark: the Neurospicy chili (same drawing as neurospicy/public/logo.svg)
+ * with a blue "buff" arrow beside it, like a stat boost in a video game.
+ * The arrow is built from separate blocks that fade out toward the top.
  */
-export function LogoMark({ size = 28 }: { size?: number }) {
+export const BUFF_BLOCKS = [
+  // [y, height, opacity] from bottom to top; the last one is the arrow head.
+  { y: 50, h: 8, o: 1 },
+  { y: 39, h: 8, o: 0.72 },
+  { y: 28, h: 8, o: 0.46 },
+];
+export const BUFF_HEAD = { points: '63,24 76,9 89,24', o: 0.32 };
+
+export function LogoMark({ height = 32 }: { height?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false" className="logo-mark">
-      <defs>
-        <linearGradient id="sb-buff" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="var(--buff)" stopOpacity="1" />
-          <stop offset="0.45" stopColor="var(--buff)" stopOpacity="0.85" />
-          <stop offset="1" stopColor="var(--buff)" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      {/* chili */}
+    <svg
+      height={height}
+      width={(height * 88) / 60}
+      viewBox="3 2 88 60"
+      aria-hidden="true"
+      focusable="false"
+      className="logo-mark"
+    >
+      {/* Neurospicy chili */}
       <path
-        d="M11.2 10.2c-3.6 2.4-5.6 7.6-4.4 12.6.6 2.6 2 4.9 3.6 6.2.8.6 1.8.2 1.8-.8-.2-3.6.6-7.4 2.4-10.4 1.2-2 2.8-3.6 4.4-4.6-1.4-2.6-5.2-4.4-7.8-3z"
-        fill="var(--chili)"
+        d="M40 17c9 5 13 17 7 28C41 56 27 61 9 58c-1.600-.3-1.800-2.400-.3-3C21 50 27 43 29 33c1.200-6 3.500-12 11-16z"
+        fill="#e5412d"
       />
-      <path d="M14.2 10.6c-.2-2.4.8-4.6 3-5.8" fill="none" stroke="var(--stem)" strokeWidth="2" strokeLinecap="round" />
-      <path d="M12.6 10.4c1.2-.9 3.4-1 5 .2" fill="none" stroke="var(--stem)" strokeWidth="2" strokeLinecap="round" />
-      {/* buff arrow */}
-      <path d="M25.5 2.5 31 9.5h-3.4V30h-4.2V9.5H20z" fill="url(#sb-buff)" />
+      <path d="M41.500 24c3.500 4.500 4 10.500 1.500 16" fill="none" stroke="#fff" strokeOpacity=".5" strokeWidth="3" strokeLinecap="round" />
+      <path
+        d="M30 20.500c3-5.500 11.500-7 16.500-1.500 1 1.100.3 2.700-1.100 2.900-2.300.3-3.800 1.300-5.200 3-1.200-1.800-2.800-2.600-5-2.400-1.700.2-3.300.9-4.500 2-.9-1-1.300-2.600-.7-4z"
+        fill="#3f9d57"
+      />
+      <path d="M40 16c-.5-5 2-9 7.500-10.500" fill="none" stroke="#2f8046" strokeWidth="4.500" strokeLinecap="round" />
+      {/* buff arrow: blocks fading toward the top */}
+      <g fill="var(--buff)">
+        {BUFF_BLOCKS.map((b) => (
+          <rect key={b.y} x="70" y={b.y} width="12" height={b.h} rx="1" opacity={b.o} />
+        ))}
+        <polygon points={BUFF_HEAD.points} opacity={BUFF_HEAD.o} />
+      </g>
     </svg>
   );
 }
