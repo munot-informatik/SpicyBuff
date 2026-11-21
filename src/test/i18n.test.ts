@@ -69,7 +69,12 @@ describe('German translation is complete and structurally identical', () => {
   });
 
   it('modalities, distortions, source notes and crisis lines are translated', () => {
-    for (const m of MODALITIES) expect(DE_MODALITIES[m.id], m.id).toBeDefined();
+    for (const m of MODALITIES) {
+      const de = DE_MODALITIES[m.id];
+      expect(de, m.id).toBeDefined();
+      expect(de.origin, m.id).toBeTruthy();
+      expect(de.philosophy.length, `${m.id} philosophy paragraphs`).toBe(m.philosophy.length);
+    }
     expect(DE_DISTORTIONS).toHaveLength(DISTORTIONS.length);
     for (const k of Object.keys(S)) expect(DE_SOURCE_NOTES[k], k).toBeTruthy();
     for (const r of CRISIS_LINES) {

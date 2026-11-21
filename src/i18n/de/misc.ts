@@ -1,39 +1,79 @@
 import type { ModalityId } from '../../data/types';
 
-export const DE_MODALITIES: Record<ModalityId, { name: string; short: string; description: string; evidence: string }> = {
+export const DE_MODALITIES: Record<
+  ModalityId,
+  { name: string; short: string; origin: string; philosophy: string[]; description: string; evidence: string }
+> = {
   cbt: {
     name: 'Kognitive Verhaltenstherapie (KVT)',
     short: 'KVT',
+    origin: 'Aaron T. Beck und Albert Ellis, ab den 1950er- und 60er-Jahren. Bekannt gemacht durch David Burns\' «Feeling Good».',
+    philosophy: [
+      'Die Grundidee: Nicht nur das, was passiert, bestimmt, wie wir uns fühlen, sondern auch, wie wir es deuten. Gedanken, Gefühle, Körperempfindungen und Handlungen befeuern sich gegenseitig in einem Kreislauf.',
+      'Ängstliche oder gedrückte Stimmung kommt oft mit automatischen Gedanken, die sich wahr anfühlen, aber verzerrt sind, etwa «Das wird eine Katastrophe» oder «Alle halten mich für dumm». Die KVT behandelt solche Gedanken als Vermutungen, die du prüfen kannst, nicht als Tatsachen, denen du gehorchen musst.',
+      'Sie ist praktisch und auf das Jetzt ausgerichtet. Du erkennst einen Gedanken, schaust dir die Belege an, machst ein kleines Experiment und siehst, was wirklich passiert. Das Ziel: deine eigene Therapeutin oder dein eigener Therapeut zu werden.',
+    ],
     description: 'Gedanken bemerken, die ein Gefühl antreiben, sie an der Realität prüfen und kleine Verhaltensexperimente ausprobieren.',
     evidence: 'Die am meisten erforschte Gesprächstherapie. Hunderte Studien stützen sie bei Angst, Depression, Panik, Schlafstörungen (KVT-I) und mehr.',
   },
   dbt: {
     name: 'Dialektisch-Behaviorale Therapie (DBT)',
     short: 'DBT',
+    origin: 'Marsha Linehan, 1980er- und 90er-Jahre, zuerst für Menschen mit sehr intensiven Gefühlen und Borderline-Persönlichkeitsstörung.',
+    philosophy: [
+      '«Dialektisch» heisst, zwei Dinge, die gegensätzlich wirken, gleichzeitig für wahr zu halten. Das wichtigste Paar: Du tust gerade dein Bestes, und du kannst trotzdem lernen, Dinge anders zu machen. Annehmen und Verändern, beides zusammen.',
+      'Die DBT sieht intensive Gefühle als Ergebnis eines empfindsamen Nervensystems, das auf ein Umfeld getroffen ist, das es nicht verstanden oder ernst genommen hat. Niemand ist schuld, aber neue Skills helfen.',
+      'Sie verbindet KVT mit Achtsamkeit aus der Zen-Praxis und vermittelt vier Skill-Bereiche: Achtsamkeit, Krisen überstehen, ohne sie schlimmer zu machen (Stresstoleranz), Gefühle regulieren und in Beziehungen für die eigenen Bedürfnisse einstehen.',
+    ],
     description: 'Skills, um intensive Gefühle durchzustehen, ohne alles schlimmer zu machen: Stresstoleranz, Emotionsregulation, Achtsamkeit.',
     evidence: 'Starke Evidenz als Gesamtprogramm bei Borderline-Persönlichkeitsstörung und Selbstverletzung. Einzelne Skills sind für sich weniger getestet.',
   },
   act: {
     name: 'Akzeptanz- und Commitment-Therapie (ACT)',
     short: 'ACT',
+    origin: 'Steven C. Hayes und Kolleg:innen, ab den 1980er-Jahren. Ausgesprochen wie das englische Wort «act» (handeln).',
+    philosophy: [
+      'Die ACT geht davon aus, dass Schmerz ein normaler Teil des Menschseins ist. Leiden wächst, wenn wir unsere Kraft darauf verwenden, schmerzhafte Gedanken und Gefühle zu bekämpfen, zu vermeiden oder mit ihnen zu streiten.',
+      'Statt zu ändern, was deine Gedanken sagen, ändert die ACT deine Beziehung zu ihnen. Du lernst, einen Gedanken als Worte zu sehen, die durch deinen Kopf ziehen («Ich habe den Gedanken, dass …»), und einem Gefühl Platz zu machen, statt mit ihm zu ringen.',
+      'Die frei gewordene Kraft fliesst in deine Werte: was für ein Mensch du sein willst und was dir wichtig ist. Das Ziel ist nicht, sich immer gut zu fühlen, sondern ein volles, sinnvolles Leben zu führen, mit allen Gefühlen, die dazugehören.',
+    ],
     description: 'Schwierigen Gedanken und Gefühlen Platz machen, statt gegen sie zu kämpfen, und dann einen Schritt zu dem gehen, was dir wichtig ist.',
     evidence: 'Meta-Analysen zeigen, dass sie bei Angst, Depression und chronischen Schmerzen etwa so gut wirkt wie andere etablierte Therapien.',
   },
   mindfulness: {
     name: 'Achtsamkeitsbasierte Ansätze (MBSR / MBCT)',
     short: 'Achtsamkeit',
+    origin: 'Wurzeln in der buddhistischen Meditation. In die Medizin gebracht von Jon Kabat-Zinn (MBSR, 1979) und in der MBCT mit KVT verbunden (Segal, Williams & Teasdale).',
+    philosophy: [
+      'Achtsamkeit heisst, absichtlich und ohne zu urteilen auf den gegenwärtigen Moment zu achten.',
+      'Viel von unserem Stress läuft auf Autopilot: die Vergangenheit wiederholen, die Zukunft durchspielen, uns von Gedanken mitreissen lassen. Achtsamkeit übt, das zu bemerken und sanft ins Jetzt zurückzukommen.',
+      'Gedanken und Gefühle gelten als vorüberziehende Ereignisse, wie das Wetter, nicht als Befehle oder Tatsachen über dich. Du musst sie nicht stoppen, nur zusehen, wie sie kommen und gehen.',
+    ],
     description: 'Die Aufmerksamkeit im gegenwärtigen Moment verankern und Gedanken vorbeiziehen lassen, ohne ihnen zu folgen.',
     evidence: 'Mittlere Effekte auf Angst und Stress. MBCT hat gute Evidenz für die Vorbeugung von Depressionsrückfällen.',
   },
   compassion: {
     name: 'Mitgefühlsfokussierte Therapie (CFT) & Selbstmitgefühl',
-    short: 'Selbstmitgefühl',
+    // ­ is a soft hyphen, so the word breaks as "Selbst-mitgefühl" on narrow tiles.
+    short: 'Selbst­mitgefühl',
+    origin: 'Paul Gilbert (Compassion-Focused Therapy, 2000er-Jahre) und die Forschung von Kristin Neff zu Selbstmitgefühl.',
+    philosophy: [
+      'Die CFT stützt sich auf die Evolution. Wir haben ein Bedrohungssystem (Alarm, Schutz), ein Antriebssystem (wollen, leisten) und ein Beruhigungssystem (Sicherheit, Verbundenheit). Viele Menschen, die mit Scham und Selbstkritik kämpfen, haben ein lautes Bedrohungssystem und ein Beruhigungssystem, das nie viel Übung bekommen hat.',
+      'Selbstmitgefühl ist weder Selbstmitleid noch Ausrede. Es hat drei Teile: Freundlichkeit dir selbst gegenüber, das Wissen, dass Schwierigkeiten zum Menschsein gehören (du bist nicht allein damit), und deinen Schmerz wahrzunehmen, ohne darin zu versinken.',
+      'Die Forschung deutet darauf hin, dass Menschen nach einem Rückschlag eher dranbleiben, wenn sie freundlich mit sich umgehen, statt sich selbst anzugreifen.',
+    ],
     description: 'Das Bedrohungssystem beruhigen, indem du dich so behandelst, wie du eine Freundin behandeln würdest, der es schlecht geht.',
     evidence: 'Eine wachsende Evidenzbasis. Randomisierte Studien zeigen mittlere Verbesserungen bei Selbstkritik, Scham, Angst und Depression.',
   },
   adlerian: {
     name: 'Adlerianische (Individual-)Psychologie',
     short: 'Adler',
+    origin: 'Alfred Adler (1870–1937), ein Wiener Arzt, der sich von Freud trennte. Als Dialog nacherzählt in «The Courage to Be Disliked» (dt. «Du musst nicht von allen gemocht werden»).',
+    philosophy: [
+      'Adler schaute nach vorne statt zurück. Statt «Was in meiner Vergangenheit hat das verursacht?» fragte er: «Was bewirkt dieses Gefühl oder Verhalten jetzt für mich, und welchem Ziel dient es?» Wir werden nicht einfach von der Vergangenheit geschoben; wir können wählen, welche Bedeutung wir ihr geben.',
+      'Er war überzeugt, dass die meisten Probleme mit Beziehungen zu anderen Menschen zu tun haben. Kernideen: deine Aufgaben von denen anderer trennen (was andere von dir denken, ist ihre Aufgabe), anderen auf Augenhöhe begegnen statt über oder unter ihnen, und Zugehörigkeit finden, indem du etwas beiträgst.',
+      'Sich unterlegen zu fühlen ist normal und kann uns wachsen lassen. Zum Problem wird es erst, wenn das Leben zum Wettkampf wird. Hinweis: Die Aussage im Buch, Trauma «gebe es nicht», ist bewusst zugespitzt. Die heutige Forschung zeigt klar, dass die Vergangenheit uns prägen kann; SpicyBuff nutzt Adlers Ideen, um deine Wahlmöglichkeiten zu erweitern, nicht um zu leugnen, was passiert ist.',
+    ],
     description:
       'Die Ideen von Alfred Adler, bekannt gemacht durch «The Courage to Be Disliked» (dt. «Du musst nicht von allen gemocht werden»): deine Aufgaben von denen anderer trennen, im Hier und Jetzt leben und Zugehörigkeit durch Beitragen finden.',
     evidence:
@@ -42,18 +82,36 @@ export const DE_MODALITIES: Record<ModalityId, { name: string; short: string; de
   somatic: {
     name: 'Körperbasierte / physiologische Regulation',
     short: 'Körper',
+    origin: 'Physiologie und Stressforschung, z. B. die Muskelentspannung nach Edmund Jacobson (1930er-Jahre) und moderne Atemstudien.',
+    philosophy: [
+      'Das wirkt «von unten nach oben»: vom Körper zum Kopf statt von den Gedanken zu den Gefühlen. Dein Nervensystem hat ein Gaspedal (Kampf oder Flucht) und eine Bremse (Ruhe und Erholung).',
+      'Wenn der Alarm sehr laut ist, sind die denkenden Teile des Gehirns schwerer erreichbar, darum hilft es selten, mit deinen Gedanken zu diskutieren. Den Zustand des Körpers zu verändern, ist oft der schnellste Weg.',
+      'Lange, langsame Ausatmer helfen, die Bremse zu aktivieren und das Herz zu verlangsamen. Kaltes Wasser im Gesicht löst einen Reflex aus, der den Körper beruhigt. Muskeln anspannen und loslassen oder eine Minute lang kräftig bewegen verbraucht Stressenergie. Sobald die Welle sinkt, wirken Denkwerkzeuge besser.',
+    ],
     description: 'Das Nervensystem über den Körper beruhigen: langsames Atmen, Muskelentspannung, Temperatur und Bewegung.',
     evidence: 'Studien zu langsamem Atmen und Entspannung zeigen kleine bis mittlere Rückgänge von Stress und Angst. Bewegung hat starke Evidenz für die Stimmung.',
   },
   sensory: {
     name: 'Sensorische Regulation (neuro-affirmativ / Ergotherapie)',
     short: 'Sensorik',
+    origin: 'Ergotherapie (z. B. Winnie Dunns Arbeit zur Reizverarbeitung) und Wissen aus autistischen und ADHS-Communities.',
+    philosophy: [
+      'Ausgangspunkt ist die Sicht der Neurodiversität: Autistische und ADHS-Gehirne verarbeiten Geräusche, Licht, Berührung und andere Reize anders. Das ist ein Unterschied, kein Fehler.',
+      'Reizüberflutung, Shutdowns und Meltdowns bedeuten oft «zu viel Input und zu wenig Erholung», nicht Schwäche oder schlechtes Benehmen. Statt dich zum Aushalten zu zwingen, änderst du also den Input: weniger von dem, was dich auslaugt, mehr von dem, was dich beruhigt.',
+      'Stimming gilt als gesunde Selbstregulation, nicht als etwas, das man verstecken muss. Energie wird als Budget gesehen, darum gehört geplante Erholungszeit zum Werkzeugkasten.',
+    ],
     description: 'Werkzeuge aus autistischen und ADHS-Communities und der Ergotherapie: Input reduzieren, beruhigenden Input hinzufügen, Erholung planen.',
     evidence: 'Ein grosser Teil dieser Forschung ist qualitativ und mit autistischen Menschen gemacht. Manche Hilfen, etwa Lärmschutz und Gewichtsdecken, haben kleine Studien.',
   },
   writing: {
     name: 'Expressives & strukturiertes Schreiben (Journaling)',
     short: 'Journaling',
+    origin: 'Die Studien von James Pennebaker zum expressiven Schreiben (ab 1986) und spätere Forschung dazu, Gefühle in Worte zu fassen.',
+    philosophy: [
+      'Gefühle in Worte zu fassen, verändert sie. Hirnstudien zeigen, dass das Benennen eines Gefühls die Alarmreaktion des Gehirns dämpfen kann.',
+      'Schreiben macht aus einem Gedankenwirbel eine Abfolge, die du von aussen anschauen kannst. Es entlastet auch das Arbeitsgedächtnis, was besonders ADHS-Gehirnen hilft: Was auf dem Papier steht, muss dein Kopf nicht mehr festhalten.',
+      'Es gibt zwei Stile: freies, expressives Schreiben über das, was du wirklich fühlst, und strukturierte Listen, etwa Sorgen, To-dos oder Pläne. Expressives Schreiben kann anfangs kurz etwas aufwühlen; das ist normal und legt sich meist wieder.',
+    ],
     description: 'Raus aus dem Kopf, rauf aufs Papier: expressives Schreiben, Brain-Dumps und Listen vor dem Schlafen.',
     evidence: 'Expressives Schreiben hat über viele Studien hinweg einen kleinen, aber beständigen Nutzen. Konkrete To-do-Listen vor dem Schlafen halfen in einer Laborstudie beim schnelleren Einschlafen.',
   },

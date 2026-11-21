@@ -611,9 +611,9 @@ export const FEELING_BY_ID: Record<string, Feeling> = Object.fromEntries(FEELING
 /** Questions asked for every feeling after the feeling-specific ones. */
 export const COMMON_QUESTIONS: Question[] = [
   q('intensity', 'How strong is it right now?', [
-    o('low', 'Noticeable (1–4 out of 10)', ['intensity:low']),
-    o('mid', 'Strong (5–7)', ['intensity:mid']),
-    o('high', 'Overwhelming (8–10)', ['intensity:high', 'high']),
+    o('low', 'Mild', ['intensity:low']),
+    o('mid', 'Medium', ['intensity:mid']),
+    o('high', 'Strong', ['intensity:high', 'high']),
   ]),
   q('setting', 'Where are you right now?', [
     o('home', 'At home, I can move around', ['setting:home']),

@@ -25,7 +25,7 @@ export const DE_CATEGORIES: Record<string, string> = {
 export const DE_COMMON: Record<string, { text: string; options: Record<string, string> }> = {
   intensity: {
     text: 'Wie stark ist es gerade?',
-    options: { low: 'Spürbar (1–4 von 10)', mid: 'Stark (5–7)', high: 'Überwältigend (8–10)' },
+    options: { low: 'Leicht', mid: 'Mittel', high: 'Stark' },
   },
   setting: {
     text: 'Wo bist du gerade?',

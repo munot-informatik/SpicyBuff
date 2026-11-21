@@ -14,6 +14,15 @@ describe('content integrity', () => {
     expect(new Set(mo).size).toBe(mo.length);
   });
 
+  it('every approach has a unique icon and a philosophy explainer', () => {
+    expect(new Set(MODALITIES.map((m) => m.icon)).size).toBe(MODALITIES.length);
+    for (const m of MODALITIES) {
+      expect(m.icon, m.id).toBeTruthy();
+      expect(m.origin, m.id).toBeTruthy();
+      expect(m.philosophy.length, m.id).toBeGreaterThanOrEqual(2);
+    }
+  });
+
   it('every exercise targets only known feelings and has a known modality', () => {
     for (const e of EXERCISES) {
       expect(MODALITY_BY_ID[e.modality], e.id).toBeDefined();

@@ -161,10 +161,41 @@ h1, h2, h3 { line-height: 1.25; letter-spacing: -0.01em; }
 }
 .option:hover { border-color: var(--calm); }
 .option.selected { border-color: var(--calm); outline: 2px solid var(--calm); }
-.option.approach { margin-bottom: 10px; display: block; width: 100%; }
-.option.approach .block { margin-top: 4px; }
-.option.best { background: var(--calm-soft); border-color: var(--calm); }
-.option.dim { opacity: 0.75; }
+
+/* Approach picker: compact icon tiles */
+.approach-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+.approach-tile {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 6px;
+  cursor: pointer; min-height: 84px; box-shadow: var(--shadow); transition: transform 0.08s ease, border-color 0.15s;
+}
+.approach-tile:hover { border-color: var(--calm); }
+.approach-tile:active { transform: scale(0.97); }
+.approach-tile.best {
+  grid-column: 1 / -1; flex-direction: row; justify-content: flex-start; gap: 12px; padding: 12px 16px; min-height: 60px;
+  background: var(--calm-soft); border-color: var(--calm); text-align: left;
+}
+.approach-tile.best .approach-name { font-size: 1rem; }
+.approach-tile.dim { opacity: 0.6; }
+.approach-icon { font-size: 1.6rem; line-height: 1; }
+.approach-name { font-weight: 600; font-size: 0.85rem; line-height: 1.2; hyphens: manual; overflow-wrap: break-word; }
+.approach-sub { color: var(--muted); font-size: 0.8rem; margin-left: auto; }
+.approx { color: var(--muted); font-weight: 700; }
+.legend { margin: 8px 2px 0; }
+
+/* Fold-out approach guide */
+.guide { margin: 18px 0 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 4px 14px; }
+.guide > summary { cursor: pointer; font-weight: 600; padding: 10px 0; }
+.guide[open] > summary { border-bottom: 1px solid var(--border); margin-bottom: 6px; }
+.guide-item { border-bottom: 1px solid var(--border); }
+.guide-item:last-child { border-bottom: 0; }
+.guide-item > summary { cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 10px 0; font-weight: 600; font-size: 0.95rem; list-style: none; }
+.guide-item > summary::-webkit-details-marker { display: none; }
+.guide-item > summary::after { content: '+'; margin-left: auto; color: var(--muted); font-weight: 700; }
+.guide-item[open] > summary::after { content: '−'; }
+.guide-icon { font-size: 1.3rem; width: 1.6rem; text-align: center; flex: none; }
+.guide-body { padding: 0 0 10px; }
+.guide-body p { margin: 8px 0; }
 
 /* Results */
 .alert { background: var(--warn-bg); color: var(--warn-ink); border-radius: 12px; padding: 12px 14px; margin: 10px 0; }

@@ -12,8 +12,14 @@ export type ModalityId =
 
 export interface Modality {
   id: ModalityId;
+  /** Small pictogram shown on the approach tiles and tags. */
+  icon: string;
   name: string;
   short: string;
+  /** Who developed it and when, in one line. */
+  origin: string;
+  /** Plain-language explanation of the ideas behind the approach, one string per paragraph. */
+  philosophy: string[];
   description: string;
   /** Honest, plain-language note about how strong the research base is. */
   evidence: string;

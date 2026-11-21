@@ -177,31 +177,83 @@ export function ApproachPicker({ feelingId, onPick }: { feelingId: string; onPic
         {t.approachTitle}
       </h1>
       <p className="muted">{t.approachSub}</p>
-      <button type="button" className="option approach best" onClick={() => onPick(null)} data-testid="modality-any">
-        <strong>{t.bestMatchAny}</strong>
-        <span className="muted small block">{t.bestMatchAnySub}</span>
-      </button>
+      <div className="approach-grid">
+        <button type="button" className="approach-tile best" onClick={() => onPick(null)} data-testid="modality-any">
+          <span className="approach-icon" aria-hidden="true">
+            ✨
+          </span>
+          <span className="approach-name">{t.bestMatchAny}</span>
+          <span className="approach-sub">{t.bestMatchAnySub}</span>
+        </button>
+        {MODALITIES.map((base) => {
+          const m = localModality(base, lang);
+          const has = available.has(m.id);
+          return (
+            <button
+              key={m.id}
+              type="button"
+              className={`approach-tile ${has ? '' : 'dim'}`}
+              onClick={() => onPick(m.id)}
+              data-testid={`modality-${m.id}`}
+              title={m.name}
+              aria-label={has ? m.name : `${m.name} (${t.noExactShort})`}
+            >
+              <span className="approach-icon" aria-hidden="true">
+                {m.icon}
+              </span>
+              <span className="approach-name" aria-hidden="true">
+                {m.short}
+                {!has && <span className="approx"> ≈</span>}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+      {MODALITIES.some((m) => !available.has(m.id)) && <p className="muted small legend">{t.noExact}</p>}
+      <ApproachGuide />
+    </section>
+  );
+}
+
+/** Fold-out explainer: what each approach is, the philosophy behind it, and how strong the research is. */
+export function ApproachGuide() {
+  const t = useT();
+  const lang = useLang();
+  return (
+    <details className="guide" data-testid="approach-guide">
+      <summary>
+        <span aria-hidden="true">ℹ️ </span>
+        {t.guideTitle}
+      </summary>
+      <p className="muted small">{t.guideIntro}</p>
       {MODALITIES.map((base) => {
         const m = localModality(base, lang);
-        const has = available.has(m.id);
         return (
-          <button
-            key={m.id}
-            type="button"
-            className={`option approach ${has ? '' : 'dim'}`}
-            onClick={() => onPick(m.id)}
-            data-testid={`modality-${m.id}`}
-          >
-            <strong>{m.name}</strong>
-            <span className="small block">{m.description}</span>
-            <span className="muted small block">
-              {t.evidence} {m.evidence}
-            </span>
-            {!has && <span className="tag warn">{t.noExact}</span>}
-          </button>
+          <details key={m.id} className="guide-item" data-testid={`guide-${m.id}`}>
+            <summary>
+              <span className="guide-icon" aria-hidden="true">
+                {m.icon}
+              </span>
+              <span>{m.name}</span>
+            </summary>
+            <div className="guide-body">
+              <p className="muted small">
+                <strong>{t.origin}</strong> {m.origin}
+              </p>
+              {m.philosophy.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+              <p>
+                <strong>{t.inPractice}</strong> {m.description}
+              </p>
+              <p className="muted small">
+                <strong>{t.evidence}</strong> {m.evidence}
+              </p>
+            </div>
+          </details>
         );
       })}
-    </section>
+    </details>
   );
 }
 
@@ -268,6 +320,7 @@ export function Results({
             className={`chip ${modality === m.id ? 'on' : ''}`}
             onClick={() => onModality(m.id)}
           >
+            <span aria-hidden="true">{m.icon} </span>
             {localModality(m, lang).short}
           </button>
         ))}
@@ -296,6 +349,7 @@ function ExerciseCard({ s, primary, onStart }: { s: Scored; primary?: boolean; o
     <article className={`card ex-card ${primary ? 'primary' : ''}`} data-testid={primary ? 'primary' : 'alternative'} data-exercise={e.id}>
       <div className="ex-meta">
         <span className="tag" data-testid="modality-tag">
+          <span aria-hidden="true">{MODALITY_BY_ID[e.modality].icon} </span>
           {localModality(MODALITY_BY_ID[e.modality], lang).short}
         </span>
         <span className="tag">{t.minutes(e.minutes)}</span>
@@ -574,6 +628,7 @@ export function About({ onClose }: { onClose: () => void }) {
         <h2 className="h-small">{t.booksTitle}</h2>
         <p>{t.books}</p>
       </div>
+      <ApproachGuide />
       <SourceList sources={allSources} title={t.allSources} />
       <button type="button" className="btn ghost block" onClick={onClose} data-testid="close">
         {t.close}

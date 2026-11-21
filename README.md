@@ -20,7 +20,7 @@ Research-informed brain exercises for the feeling you have **right now**, built 
 The rules are in `src/engine/recommend.ts`, applied in this order:
 
 1. **Setting.** In public you only get discreet exercises, and in bed nothing that needs you to get up and move.
-2. **Intensity.** At 8–10 you get body-first exercises that work under overwhelm.
+2. **Intensity.** When it's "Strong" you get body-first exercises that work under overwhelm.
 3. **Soft fit.** How well the exercise matches your answers, how much time you have, and small bonuses.
 
 ## Privacy

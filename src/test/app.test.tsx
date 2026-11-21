@@ -106,7 +106,7 @@ for (const lang of LANGS) {
           screen.getByRole('heading', { name: t.tryThisNow });
           const tag = within(id('primary')).getByTestId('modality-tag').textContent;
           if (avail.has(m.id)) {
-            expect(tag).toBe(localModality(m, lang).short);
+            expect(tag).toBe(`${m.icon} ${localModality(m, lang).short}`);
             expect(screen.queryByTestId('fallback')).toBeNull();
           } else {
             expect(id('fallback')).toBeInTheDocument();
@@ -250,12 +250,52 @@ for (const lang of LANGS) {
       screen.getByText(t.noMatch);
     });
 
+    it('approach picker shows compact icon tiles and a closed fold-out guide', () => {
+      enter(lang);
+      click(id('feeling-sensory'));
+      answerAll('sensory', lang);
+      screen.getByRole('heading', { name: t.approachTitle });
+      const avail = modalitiesFor('sensory');
+      for (const base of MODALITIES) {
+        const m = localModality(base, lang);
+        const tile = screen.getByRole('button', { name: avail.has(m.id) ? m.name : `${m.name} (${t.noExactShort})` });
+        expect(tile).toHaveTextContent(m.icon);
+        expect(tile).toHaveTextContent(m.short);
+        // Tiles stay short: no long description or research text on the button itself.
+        expect(tile).not.toHaveTextContent(m.description);
+      }
+      if (MODALITIES.some((m) => !avail.has(m.id))) screen.getByText(t.noExact);
+      const guide = id('approach-guide') as HTMLDetailsElement;
+      expect(guide.open).toBe(false);
+      click(within(guide).getByText(t.guideTitle));
+      expect(guide.open).toBe(true);
+      for (const base of MODALITIES) {
+        const m = localModality(base, lang);
+        const item = id(`guide-${m.id}`) as HTMLDetailsElement;
+        expect(item.open).toBe(false);
+        click(within(item).getByText(m.name));
+        expect(item.open).toBe(true);
+        within(item).getByText(m.origin);
+        for (const p of m.philosophy) within(item).getByText(p);
+        within(item).getByText(m.evidence);
+      }
+    });
+
+    it('intensity question uses plain words, not numbers', () => {
+      enter(lang);
+      click(id('feeling-anxiety'));
+      const q = localQuestion(questionsFor('anxiety').find((x) => x.id === 'intensity')!, 'anxiety', lang);
+      expect(q.options.map((o) => o.label)).toEqual(lang === 'en' ? ['Mild', 'Medium', 'Strong'] : ['Leicht', 'Mittel', 'Stark']);
+      for (const o of q.options) expect(o.label).not.toMatch(/[0-9]/);
+    });
+
     it('about page lists legal text, privacy and all sources', () => {
       enter(lang);
       click(id('about'));
       screen.getByRole('heading', { name: t.aboutTitle });
       screen.getByText(t.notAdvice[0]);
       screen.getByText(t.books);
+      expect(id('approach-guide')).toBeInTheDocument();
       screen.getByText(new RegExp(t.allSources));
     });
   });
