@@ -1,22 +1,23 @@
 /**
  * SpicyBuff mark: the Neurospicy chili (same drawing as neurospicy/public/logo.svg)
  * with a blue "buff" arrow beside it, like a stat boost in a video game.
- * The arrow is built from separate blocks that fade out toward the top.
+ * The arrow is built from separate blocks: solid head on top, fading out toward the bottom.
  */
+/** Shaft blocks from top to bottom, each one fainter. */
 export const BUFF_BLOCKS = [
-  // [y, height, opacity] from bottom to top; the last one is the arrow head.
-  { y: 50, h: 8, o: 1 },
-  { y: 39, h: 8, o: 0.72 },
-  { y: 28, h: 8, o: 0.46 },
+  { y: 28, h: 8, o: 0.72 },
+  { y: 39, h: 8, o: 0.46 },
+  { y: 50, h: 8, o: 0.22 },
 ];
-export const BUFF_HEAD = { points: '63,24 76,9 89,24', o: 0.32 };
+export const BUFF_HEAD = { points: '53,24 66,9 79,24', o: 1 };
+const VIEW = { x: 3, y: 2, w: 78, h: 60 };
 
 export function LogoMark({ height = 32 }: { height?: number }) {
   return (
     <svg
       height={height}
-      width={(height * 88) / 60}
-      viewBox="3 2 88 60"
+      width={(height * VIEW.w) / VIEW.h}
+      viewBox={`${VIEW.x} ${VIEW.y} ${VIEW.w} ${VIEW.h}`}
       aria-hidden="true"
       focusable="false"
       className="logo-mark"
@@ -32,10 +33,10 @@ export function LogoMark({ height = 32 }: { height?: number }) {
         fill="#3f9d57"
       />
       <path d="M40 16c-.5-5 2-9 7.500-10.500" fill="none" stroke="#2f8046" strokeWidth="4.500" strokeLinecap="round" />
-      {/* buff arrow: blocks fading toward the top */}
+      {/* buff arrow: solid head, blocks fading toward the bottom */}
       <g fill="var(--buff)">
         {BUFF_BLOCKS.map((b) => (
-          <rect key={b.y} x="70" y={b.y} width="12" height={b.h} rx="1" opacity={b.o} />
+          <rect key={b.y} x="60" y={b.y} width="12" height={b.h} rx="1" opacity={b.o} />
         ))}
         <polygon points={BUFF_HEAD.points} opacity={BUFF_HEAD.o} />
       </g>
